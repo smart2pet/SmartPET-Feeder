@@ -123,12 +123,13 @@ class Ui_MainWindow(QtWidgets.QWidget):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "自动喂食机控制界面"))
-        self.feed.setText(_translate("MainWindow", "喂食/克"))
-        self.add.setText(_translate("MainWindow", "添加喂食计划"))
+        self.label.setText(_translate("MainWindow", "SmartPET Control Panel"))
+        
+        self.feed.setText(_translate("MainWindow", "Feed/g"))
+        self.add.setText(_translate("MainWindow", "Add feeding plan"))
         self.label_2.setText(_translate("MainWindow", "："))
         self.label_3.setText(_translate("MainWindow", "g"))
-        self.delete.setText(_translate("MainWindow", "删除喂食计划"))
+        self.delete.setText(_translate("MainWindow", "Delete feeding plan"))
         self.label_4.setText(_translate("MainWindow", "："))
         self.label_5.setText(_translate("MainWindow", "g"))
     
@@ -147,10 +148,10 @@ class Ui_MainWindow(QtWidgets.QWidget):
             sql.add_plan(hours, minutes, weight, cursor)
             conn.commit()
             conn.close()
-            QtWidgets.QMessageBox.information(self, 'Complete', '添加计划完成')
+            QtWidgets.QMessageBox.information(self, 'Complete', 'Completed')
             # QtWidgets.QMessageBox(QtWidgets.QMessageBox.Icon(0), 'Completed', '添加计划完成')
         else:
-            QtWidgets.QMessageBox.information(self, 'Error', '数据内容错误')
+            QtWidgets.QMessageBox.information(self, 'Error', 'Invalid input')
 
     def del_plan(self):
         conn = sqlite3.Connection('./smartpet.db')
@@ -161,9 +162,9 @@ class Ui_MainWindow(QtWidgets.QWidget):
             sql.del_plan(hours, minutes, cursor)
             conn.commit()
             conn.close()
-            QtWidgets.QMessageBox.information(self, 'Complete', '删除计划完成')
+            QtWidgets.QMessageBox.information(self, 'Complete', 'Completed')
         else:
-            QtWidgets.QMessageBox.information(self, 'Error', '数据内容错误')
+            QtWidgets.QMessageBox.information(self, 'Error', 'Invalid input')
 
 if __name__ == "__main__":
     import sys
