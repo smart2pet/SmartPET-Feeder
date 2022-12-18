@@ -4,13 +4,23 @@ The open-source, easy-to-use feeder
 
 ## Installation:
 
-###     Requirements:
-
-        * A Raspberry Pi OS
-
+### Requirements:
+#### For Raspberry Pi:
+        * A Raspberry Pi with Raspberry Pi OS (of course).
         * A touchscreen
+        * A outer shell (recommanded because the pet maybe break the machine.)
+#### For Espressif ESP32:
+        * A Expressif ESP32 module (of course).
+#### For other hardware:
+        * A stepper motor and a A4988 stepper motor driver.
+        * You need 3D-print or some way to make the feeder hardware (the .obj 3D file is in `hardware` directory).
+        * Some wires and power supply.
+### Install:
+#### For Raspberry Pi:
+        * Just use `bash raspberry_pi/install.sh`, and it will automatic install.
+#### For Espressif ESP32:
+        * Please use PlatformIO to open the project and just upload it.
 
-And just download this into a folder.
 
 ## Contributing:
 
