@@ -14,7 +14,7 @@ And just download this into a folder.
 
 ## Contributing:
 
-Open a pull request is welcome for us. But if you want to make bug fixes or major changes such as a new function, etc.
+Open a pull request is welcome for us. But if you want to make bug fixes or major changes such as a new function, etc., please create an issue first.
 
 ## License
 
