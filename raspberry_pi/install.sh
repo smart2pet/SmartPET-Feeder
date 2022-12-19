@@ -1,5 +1,5 @@
 echo Installing python requirements...
-pip3 install -r ./requirements.txt
+pip install -r ./raspberry_pi/requirements.txt
 echo Installed python requirements!
 echo Creating desktop shortcut...
 echo Enter your host ip address:
