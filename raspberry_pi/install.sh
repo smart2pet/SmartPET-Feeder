@@ -5,8 +5,8 @@ echo Installed python requirements!
 echo Creating desktop shortcut...
 echo Enter your host ip address:
 read ip
-echo "cd ~/smartpet-feeder" >> ~/Desktop/start.sh
+echo "cd ~/smartpet-feeder/raspberry_pi/src" >> ~/Desktop/start.sh
 echo "python ./ui.py &" >> ~/Desktop/start.sh
 echo "python ./query.py &" >> ~/Desktop/start.sh
-echo "uvicorn web_api:app --reload --host $ip"
+echo "python -m uvicorn web_api:app --reload --host $ip"
 echo Install successfully completed.
