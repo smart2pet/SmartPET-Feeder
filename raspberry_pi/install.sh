@@ -1,5 +1,6 @@
 echo Installing python requirements...
 pip install -r ./raspberry_pi/requirements.txt
+sudo apt install python3-pyqt5
 echo Installed python requirements!
 echo Creating desktop shortcut...
 echo Enter your host ip address:
