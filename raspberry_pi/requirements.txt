@@ -3,4 +3,4 @@ pydantic==1.10.2
 # PyQt5==5.15.7
 pyserial==3.5
 qt_material==2.12
-tflite_runtime==2.10.0
+tflite_runtime==2.11.0
