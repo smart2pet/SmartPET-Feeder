@@ -8,7 +8,7 @@ The open-source, easy-to-use feeder
 #### For Raspberry Pi:
 + A Raspberry Pi with Raspberry Pi OS (of course).
 + A touchscreen
-+ A outer shell (recommanded because the pet maybe break the machine.)
++ A outer shell (recommanded because the pet may break the machine.)
 #### For Espressif ESP32:
 + A Expressif ESP32 module (of course).
 #### For Other Hardware:
