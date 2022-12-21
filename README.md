@@ -1,5 +1,5 @@
 # SmartPET Feeder
-
+!(/doc/logo.png)
 The open-source, easy-to-use feeder
 
 ## Installation:
