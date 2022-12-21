@@ -31,8 +31,10 @@ train_x = [
     [15],
     [5],
 ]
-# Bring your data here. train_y is the weight of food put out when turn the round in train_x, a data in train_y matches a data in train_x. Don't change train_x, 
-# you need to do these test and bring the weight of food put out in train_y (the unit is gram).
+# Bring your data here. train_y is the weight of food dropped when turn the round in train_x, a data in train_y matches a data in train_x. Don't change train_x, 
+# you need to do these test and bring the weight of food dropped in train_y (the unit is gram).
+
+# You may train in multiple times to get the best result.
 train_y = [
     [30],
     [50],
@@ -53,8 +55,7 @@ train_y = [
 train_x = np.array(train_x)
 print(train_x)
 train_y = np.array(train_y)
-test_x = [140, 240]
-test_y = [61, 89] # bring your result here.
+
 
 
 def build_model() -> tf.keras.Sequential:
@@ -111,5 +112,9 @@ history = model.fit(
     callbacks=[early_stop, PrintDot()],
 )
 model.save("./model.h5")
+# Do the test.
 test_predictions = model.predict([[60]])
 print(test_predictions)
+# After the test, please do the test on your motor and see the weight of food dropped.
+# If there was a big error(more than ±4 gram), please train again.
+# If it's always like that, please check the data.
