@@ -35,7 +35,7 @@ def get_plan(cursor: sqlite3.Cursor) -> list:
     :param cursor: The cursor to the database.
     :return: The plan.
     """
-    cursor.execute(f"SELECT * FROM plan;")
+    cursor.execute("SELECT * FROM plan;")
     return cursor.fetchall()
 
 
