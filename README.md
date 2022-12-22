@@ -1,6 +1,5 @@
 # SmartPET Feeder
-[![CodeQL](https://github.com/smart2pet/SmartPET-Feeder/actions/workflows/codeql.yml/badge.svg)](https://github.com/smart2pet/SmartPET-Feeder/actions/workflows/codeql.yml)
-[![Codacy Security Scan](https://github.com/smart2pet/SmartPET-Feeder/actions/workflows/codacy.yml/badge.svg)](https://github.com/smart2pet/SmartPET-Feeder/actions/workflows/codacy.yml)
+[![CodeQL](https://github.com/smart2pet/SmartPET-Feeder/actions/workflows/codeql.yml/badge.svg)](https://github.com/smart2pet/SmartPET-Feeder/actions/workflows/codeql.yml)  
 The open-source, easy-to-use feeder
 ![Logo](./doc/logo.png "Logo")
 
