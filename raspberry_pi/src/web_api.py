@@ -28,6 +28,9 @@ class Plan_time(BaseModel):
 class Get_food(BaseModel):
     range: str
 
+@app.get("/")
+async def greeting():
+    return 200
 
 @app.post("/api/food")
 async def feed_func(feed_argument: Feed) -> Dict[str, int]:
