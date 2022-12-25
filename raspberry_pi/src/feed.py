@@ -12,6 +12,7 @@ except:
         feeder = serial.Serial('/dev/ttyUSB0', 115200)
     except:
         print('[WARN] Using simulate feeding mode. ***No serial connection and real feeding.***')
+        feeder = None
         # pass
 
 # Load feeding precise model.
@@ -38,6 +39,7 @@ def feed(weight: int) -> None:
     custom = interpreter.get_tensor(tflife_output_details[0]["index"])
     print(custom)
     # Start to feed
+    
     _feed.feed(int(custom[0][0]), feeder)
     # Get the time
     now_time = time.localtime()
