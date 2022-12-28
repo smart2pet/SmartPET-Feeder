@@ -1,7 +1,9 @@
 import sqlite3
 
 
-def add_plan(hours: int, minutes: int, weight: int, cursor: sqlite3.Cursor) -> None:
+def add_plan(
+    hours: int, minutes: int, weight: int, cursor: sqlite3.Cursor
+):
     """
     Add a plan to the database.
     :param hours: The number of hours to run the plan.
@@ -15,10 +17,12 @@ def add_plan(hours: int, minutes: int, weight: int, cursor: sqlite3.Cursor) -> N
     cursor.execute(
         f"INSERT INTO plan (hours, minutes, weights) VALUES ({hours}, {minutes}, {weight});"
     )
-    cursor.close()
+    return cursor
 
 
-def del_plan(hours: int, minutes: int, cursor: sqlite3.Cursor) -> None:
+def del_plan(
+    hours: int, minutes: int, cursor: sqlite3.Cursor
+) -> None:
     """
     Delete a plan from the database.
     :param hours: The hours of the plan.
@@ -29,7 +33,7 @@ def del_plan(hours: int, minutes: int, cursor: sqlite3.Cursor) -> None:
     cursor.execute(f"DELETE FROM plan WHERE hours = {hours} and minutes = {minutes};")
 
 
-def get_plan(cursor: sqlite3.Cursor) -> list:
+def get_plan(cursor: sqlite3.Cursor) -> list[tuple]:
     """
     Get the plan from the database.
     :param cursor: The cursor to the database.
@@ -88,15 +92,14 @@ def get_total_feed_today(
     return cursor.fetchone()
 
 
-def get_total_feed_this_month(year, month, cursor: sqlite3.Cursor):
+def get_total_feed_this_month(year, month, day, cursor: sqlite3.Cursor):
     """
     Get the total feed this month.
-
     Args:
         year (int): The year.
         month (int): The month.
+        day (everything): Ignored because it's useful. But we need to adapt the function in web_api.py.
         cursor (sqlite3.Cursor): The cursor.
-
     Returns:
         int: The total feed this month.
     """
@@ -106,7 +109,19 @@ def get_total_feed_this_month(year, month, cursor: sqlite3.Cursor):
     return cursor.fetchone()
 
 
-def get_average_feed_last_month(year, month, cursor: sqlite3.Cursor):
+def get_average_feed_last_month(year, month, day, cursor: sqlite3.Cursor):
+    """
+    Get the average feed weight for the last month.
+
+    Args:
+        year (int): The year.
+        month (int): The month.
+        day (int): Look at get_total_feed_this_month(year, month, day, cursor: sqlite3.Cursor). 
+        cursor (sqlite3.Cursor): The database cursor.
+
+    Returns:
+        float: The average feed weight for the last month.
+    """
     if month > 1:
         cursor.execute(
             f"SELECT AVG(weight) FROM history WHERE year = {year} and month = {month - 1};"
@@ -115,14 +130,12 @@ def get_average_feed_last_month(year, month, cursor: sqlite3.Cursor):
     return 0
 
 
-def get_total_feed_this_year(year, cursor: sqlite3.Cursor):
+def get_total_feed_this_year(year, month, day, cursor: sqlite3.Cursor):
     """
     Get the total feed this year.
-
     Args:
         year (int): The year to get the total feed for.
         cursor (sqlite3.Cursor): The cursor to use to execute the query.
-
     Returns:
         int: The total feed this year.
     """
