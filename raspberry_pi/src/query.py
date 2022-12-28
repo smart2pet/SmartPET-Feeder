@@ -20,6 +20,8 @@ def start_query() -> None:
         if (now_hours == 0) and (now_minutes == 0):
             history = []
         for plan in plans:
+            # Check for feeding time.
+            
             hours = plan[0]
             minutes = plan[1]
             weight = plan[2]
