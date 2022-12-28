@@ -121,7 +121,8 @@ async def get_food_weight(food_range: Get_food) -> int:
             "avg_month": sql.get_average_feed_last_month,
             "year": sql.get_total_feed_this_year,
         }
-        get_total_feed = switcher.get(food_range.range, None)
+        get_total_feed = switcher.get(food_range.range, None) # Use dict to simply switch the condition. If you can't know what's
+        # it means, just ignore it. 
         if get_total_feed is not None:
             result = get_total_feed(year, month, day, cursor)
             result = result[0]
@@ -129,21 +130,5 @@ async def get_food_weight(food_range: Get_food) -> int:
             result_dict = {"result": 0, "weight": result}
         else:
             result_dict = {"result": 1, "reason": "Range invalid."}
-        # if food_range.range == "today":
-        #     result = sql.get_total_feed_today(year, month, day, cursor)
-        #     result_dict = {"result": 0, "weight": result[0]}
-        # elif food_range.range == "month":
-        #     result = sql.get_total_feed_this_month(year, month, cursor)
-        #     result_dict = {"result": 0, "weight": result[0]}
-        # elif food_range.range == "avg_month":
-        #     result = sql.get_average_feed_last_month(year, month, cursor)
-        #     result_dict = {"result": 0, "weight": result[0]}
-        # elif food_range.range == "year":
-        #     result = sql.get_total_feed_this_year(year, cursor)
-        #     result_dict = {"result": 0, "weight": result[0]}
-        # else:
-        #     result_dict = {"result": 1, "reason": "Range invalid."}
-
-        # Thanks for the notice of the bot! I forgoted to close the connection.
 
     return result_dict
