@@ -44,9 +44,14 @@ The open-source, easy-to-use feeder
                                            "time_h": $hour,
                                            "time_m": $minutes,
                                            }
-## Contributing:
 
-Open a pull request is welcome for us. But if you want to make bug fixes or major changes such as a new function, etc., please create an issue first.
+#### Mobile APP Use
++ I developed a mobile app (Now just in Android bring it in iOS later). It was simple and crude for now. If you can contribute, 
+please contribute to it. Project Address: https://github.com/smart2pet/SmartPETFeederMobile.git. 
+## Contributing:
++ We accept and welcome contributes. You can create an issue for reporting bugs. But it's better to solve them by yourself. You just need to 
+create an issue for some bugs that you can't resolve or you want to make some new functions. 
++ For more details, please look at CONTRIBUTING.md.
 
 ## License
 
