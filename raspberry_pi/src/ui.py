@@ -127,10 +127,10 @@ class Ui_MainWindow(QtWidgets.QWidget):
         
         self.feed.setText(_translate("MainWindow", "Feed/g"))
         self.add.setText(_translate("MainWindow", "Add feeding plan"))
-        self.label_2.setText(_translate("MainWindow", "："))
+        self.label_2.setText(_translate("MainWindow", ":"))
         self.label_3.setText(_translate("MainWindow", "g"))
         self.delete.setText(_translate("MainWindow", "Delete feeding plan"))
-        self.label_4.setText(_translate("MainWindow", "："))
+        self.label_4.setText(_translate("MainWindow", ":"))
         self.label_5.setText(_translate("MainWindow", "g"))
     
     def feed1(self):
@@ -149,7 +149,6 @@ class Ui_MainWindow(QtWidgets.QWidget):
             conn.commit()
             conn.close()
             QtWidgets.QMessageBox.information(self, 'Complete', 'Completed')
-            # QtWidgets.QMessageBox(QtWidgets.QMessageBox.Icon(0), 'Completed', '添加计划完成')
         else:
             QtWidgets.QMessageBox.information(self, 'Error', 'Invalid input')
 
