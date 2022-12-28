@@ -31,7 +31,7 @@ The open-source, easy-to-use feeder
 + You must convert .h5 hdf5 format to the .tflite tensorflow lite format and replace `raspberry_pi/src/model.tflite` to your model.
 
 #### ESP32 Use
-+ You can use it by write s{your rounds}; to the serial.
++ You can use it by write s(rounds); to the serial.
 
 #### Web API Use
 + Feed: POST /api/food JSON input: {"weight": $your feeding weight}
