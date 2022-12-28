@@ -124,6 +124,8 @@ async def get_food_weight(food_range: Get_food) -> int:
         get_total_feed = switcher.get(food_range.range, None)
         if get_total_feed is not None:
             result = get_total_feed(year, month, day, cursor)
+            result = result[0]
+            if result is None: result = 0
             result_dict = {"result": 0, "weight": result[0]}
         else:
             result_dict = {"result": 1, "reason": "Range invalid."}
