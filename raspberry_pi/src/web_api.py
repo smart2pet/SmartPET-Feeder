@@ -115,20 +115,32 @@ async def get_food_weight(food_range: Get_food) -> int:
         month = now_time.tm_mon
         day = now_time.tm_mday
         result: int
-        if food_range.range == "today":
-            result = sql.get_total_feed_today(year, month, day, cursor)
-            result_dict = {"result": 0, "weight": result[0]}
-        elif food_range.range == "month":
-            result = sql.get_total_feed_this_month(year, month, cursor)
-            result_dict = {"result": 0, "weight": result[0]}
-        elif food_range.range == "avg_month":
-            result = sql.get_average_feed_last_month(year, month, cursor)
-            result_dict = {"result": 0, "weight": result[0]}
-        elif food_range.range == "year":
-            result = sql.get_total_feed_this_year(year, cursor)
+        switcher = {
+            "today": sql.get_total_feed_today,
+            "month": sql.get_total_feed_this_month,
+            "avg_month": sql.get_average_feed_last_month,
+            "year": sql.get_total_feed_this_year,
+        }
+        get_total_feed = switcher.get(food_range.range, None)
+        if get_total_feed is not None:
+            result = get_total_feed(year, month, day, cursor)
             result_dict = {"result": 0, "weight": result[0]}
         else:
             result_dict = {"result": 1, "reason": "Range invalid."}
+        # if food_range.range == "today":
+        #     result = sql.get_total_feed_today(year, month, day, cursor)
+        #     result_dict = {"result": 0, "weight": result[0]}
+        # elif food_range.range == "month":
+        #     result = sql.get_total_feed_this_month(year, month, cursor)
+        #     result_dict = {"result": 0, "weight": result[0]}
+        # elif food_range.range == "avg_month":
+        #     result = sql.get_average_feed_last_month(year, month, cursor)
+        #     result_dict = {"result": 0, "weight": result[0]}
+        # elif food_range.range == "year":
+        #     result = sql.get_total_feed_this_year(year, cursor)
+        #     result_dict = {"result": 0, "weight": result[0]}
+        # else:
+        #     result_dict = {"result": 1, "reason": "Range invalid."}
 
         # Thanks for the notice of the bot! I forgoted to close the connection.
 
