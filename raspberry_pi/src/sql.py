@@ -12,10 +12,10 @@ def add_plan(
     :param cursor: The cursor to the database.
     """
     print(
-        f"INSERT INTO plan (hours, minutes, weights) VALUES ({hours}, {minutes}, {weight});"
+        f"INSERT INTO plan (hours, minutes, weights) VALUES ({hours}, {minutes}, {amount});"
     )
     cursor.execute(
-        f"INSERT INTO plan (hours, minutes, weights) VALUES ({hours}, {minutes}, {weight});"
+        f"INSERT INTO plan (hours, minutes, weights) VALUES ({hours}, {minutes}, {amount});"
     )
     return cursor
 
