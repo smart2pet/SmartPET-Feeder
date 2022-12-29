@@ -22,12 +22,12 @@ tflife_input_details = interpreter.get_input_details()
 tflife_output_details = interpreter.get_output_details()
 
 
-def feed(weight: int) -> None:
+def feed(amount: int) -> None:
     """
     Feed the pet with the given weight.
 
-    :param weight: The weight of the food.
-    :type weight: int
+    :param amount: The amount of the food.
+    :type amount: int
     :return: None
     :rtype: None
     """
@@ -49,7 +49,7 @@ def feed(weight: int) -> None:
     month = now_time.tm_mon
     day = now_time.tm_mday
     # Store the feeding history.
-    sql.add_to_history(hours, minutes, weight, year, month, day, cursor)
+    sql.add_to_history(hours, minutes, amount, year, month, day, cursor)
     conn.commit()
     conn.close()
     # Log

@@ -118,7 +118,7 @@ async def get_food_amount(food_range: Get_food) -> int:
         switcher = {
             "today": sql.get_total_feed_amount_today,
             "month": sql.get_total_feed_amount_this_month,
-            "avg_month": sql.get_average_amount_feed_last_month,
+            "avg_month": sql.get_average_feed_amount_last_month,
             "year": sql.get_total_feed_amount_this_year,
         }
         get_total_feed = switcher.get(food_range.range, None) # Use dict to simply switch the condition. If you can't know what's
