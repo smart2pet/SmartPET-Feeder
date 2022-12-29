@@ -98,7 +98,7 @@ async def del_plan_func(plan_argument: Plan_time) -> Dict[str, int]:
 
 
 @app.get("/api/food")
-async def get_food_weight(food_range: Get_food) -> int:
+async def get_food_amount(food_range: Get_food) -> int:
     """
     Get the food weight from the database.
 
@@ -116,10 +116,10 @@ async def get_food_weight(food_range: Get_food) -> int:
         day = now_time.tm_mday
         result: int
         switcher = {
-            "today": sql.get_total_feed_today,
-            "month": sql.get_total_feed_this_month,
-            "avg_month": sql.get_average_feed_last_month,
-            "year": sql.get_total_feed_this_year,
+            "today": sql.get_total_feed_amount_today,
+            "month": sql.get_total_feed_amount_this_month,
+            "avg_month": sql.get_average_amount_feed_last_month,
+            "year": sql.get_total_feed_amount_this_year,
         }
         get_total_feed = switcher.get(food_range.range, None) # Use dict to simply switch the condition. If you can't know what's
         # it means, just ignore it. 

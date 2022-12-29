@@ -2,13 +2,13 @@ import sqlite3
 
 
 def add_plan(
-    hours: int, minutes: int, weight: int, cursor: sqlite3.Cursor
+    hours: int, minutes: int, amount: int, cursor: sqlite3.Cursor
 ):
     """
     Add a plan to the database.
     :param hours: The number of hours to run the plan.
     :param minutes: The number of minutes to run the plan.
-    :param weight: The weight of the plan.
+    :param amount: The amount of the food (in gram).
     :param cursor: The cursor to the database.
     """
     print(
@@ -72,7 +72,7 @@ def add_to_history(
     cursor.close()
 
 
-def get_total_feed_today(
+def get_total_feed_amount_today(
     year: int,
     month: int,
     day: int,
@@ -92,7 +92,7 @@ def get_total_feed_today(
     return cursor.fetchone()
 
 
-def get_total_feed_this_month(year, month, day, cursor: sqlite3.Cursor):
+def get_total_feed_amount_this_month(year, month, day, cursor: sqlite3.Cursor):
     """
     Get the total feed this month.
     Args:
@@ -109,7 +109,7 @@ def get_total_feed_this_month(year, month, day, cursor: sqlite3.Cursor):
     return cursor.fetchone()
 
 
-def get_average_feed_last_month(year, month, day, cursor: sqlite3.Cursor):
+def get_average_feed_amount_last_month(year, month, day, cursor: sqlite3.Cursor):
     """
     Get the average feed weight for the last month.
 
@@ -130,7 +130,7 @@ def get_average_feed_last_month(year, month, day, cursor: sqlite3.Cursor):
     return 0
 
 
-def get_total_feed_this_year(year, month, day, cursor: sqlite3.Cursor):
+def get_total_feed_amount_this_year(year, month, day, cursor: sqlite3.Cursor):
     """
     Get the total feed this year.
     Args:
