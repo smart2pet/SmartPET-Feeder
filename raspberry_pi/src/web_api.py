@@ -60,7 +60,7 @@ async def add_plan_func(plan_argument: Plan) -> Dict[str, int]:
     Returns:
         A dict containing the result of the operation.
     """
-    if (plan_argument.time_h >= 24) or (plan_argument.time_m >= 60):
+    if ((plan_argument.time_h >= 24) or (plan_argument.time_m >= 60)) or ((plan_argument.time_h < 0) or (plan_argument.time_m < 0)):
         print("[WARN] Client sent invalid data")
         return {"result": 1, "reason": "Data invalid."}
     else:
