@@ -13,5 +13,5 @@ CREATE TABLE history (
     month   INTEGER NOT NULL,
     day     INTEGER NOT NULL
 );
-DELETE FROM sqlite_sequence;
+
 COMMIT;
