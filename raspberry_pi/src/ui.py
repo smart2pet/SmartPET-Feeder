@@ -10,6 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import sql
 import sqlite3
 import feed
+from config import DB_PATH
 from qt_material import apply_stylesheet
 
 class Ui_MainWindow(QtWidgets.QWidget):
@@ -138,7 +139,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
         feed.feed(weight)
 
     def add_plan(self):
-        conn = sqlite3.Connection('~/smartpet.db')
+        conn = sqlite3.Connection(DB_PATH)
         cursor = sqlite3.Cursor(conn)
         hours = self.hours_1.value()
         minutes = self.minutes_1.value()
@@ -154,7 +155,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
         conn.close()
 
     def del_plan(self):
-        conn = sqlite3.Connection('~/smartpet.db')
+        conn = sqlite3.Connection(DB_PATH)
         cursor = sqlite3.Cursor(conn)
         hours = self.hours_2.value()
         minutes = self.minutes_2.value()

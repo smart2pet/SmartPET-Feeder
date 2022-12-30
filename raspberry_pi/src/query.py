@@ -2,8 +2,9 @@ import sqlite3
 import time
 import feed
 import sql
+from config import DB_PATH
 
-conn = sqlite3.Connection("~/smartpet.db")
+conn = sqlite3.Connection(DB_PATH)
 
 
 def start_query() -> None:

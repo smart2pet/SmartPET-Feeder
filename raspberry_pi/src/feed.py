@@ -4,6 +4,7 @@ import _feed
 import serial
 import sql
 import tflite_runtime.interpreter as tflite
+from config import DB_PATH
 
 try:
     feeder = serial.Serial("/dev/ttyUSB1", 115200) # Connect to the esp32
@@ -31,7 +32,7 @@ def feed(amount: int) -> None:
     :return: None
     :rtype: None
     """
-    conn = sqlite3.Connection("~/smartpet.db") # Connect to the database for storing the feeding data  
+    conn = sqlite3.Connection(DB_PATH) # Connect to the database for storing the feeding data  
     cursor = sqlite3.Cursor(conn)
     # Run the model
     interpreter.set_tensor(tflife_input_details[0]["index"], [[amount - 5]])
