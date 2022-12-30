@@ -1,6 +1,6 @@
 #!/bin/bash
 echo Installing python requirements...
-pip install -r ./raspberry_pi/requirements.txt
+pip install -r ./requirements.txt
 sudo apt install python3-pyqt5
 echo Installed python requirements!
 echo Creating desktop shortcut...
