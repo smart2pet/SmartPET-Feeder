@@ -1,3 +1,4 @@
+#!/bin/bash
 echo Installing python requirements...
 pip install -r ./raspberry_pi/requirements.txt
 sudo apt install python3-pyqt5
