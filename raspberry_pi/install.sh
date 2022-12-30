@@ -13,7 +13,7 @@ echo "python -m uvicorn web_api:app --reload --host $ip" >> ~/Desktop/start.sh
 echo Created desktop shortcut.
 echo "Creating database at ~/smartpet.db..."
 cd ~
-sqlite3 smartpet.db smartpet.sql
+sqlite3 smartpet.db < smartpet.sql
 if [ $? != 0 ] 
 then
 echo Install failed.
