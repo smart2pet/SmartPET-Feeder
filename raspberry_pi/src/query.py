@@ -3,7 +3,7 @@ import time
 import feed
 import sql
 
-conn = sqlite3.Connection("./smartpet.db")
+conn = sqlite3.Connection("~/smartpet.db")
 
 
 def start_query() -> None:

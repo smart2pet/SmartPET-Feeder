@@ -138,7 +138,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
         feed.feed(weight)
 
     def add_plan(self):
-        conn = sqlite3.Connection('./smartpet.db')
+        conn = sqlite3.Connection('~/smartpet.db')
         cursor = sqlite3.Cursor(conn)
         hours = self.hours_1.value()
         minutes = self.minutes_1.value()
@@ -147,23 +147,25 @@ class Ui_MainWindow(QtWidgets.QWidget):
             print(hours, minutes)
             sql.add_plan(hours, minutes, weight, cursor)
             conn.commit()
-            conn.close()
+            # conn.close()
             QtWidgets.QMessageBox.information(self, 'Complete', 'Completed')
         else:
             QtWidgets.QMessageBox.information(self, 'Error', 'Invalid input')
+        conn.close()
 
     def del_plan(self):
-        conn = sqlite3.Connection('./smartpet.db')
+        conn = sqlite3.Connection('~/smartpet.db')
         cursor = sqlite3.Cursor(conn)
         hours = self.hours_2.value()
         minutes = self.minutes_2.value()
         if ((hours < 24) and (minutes < 60)):
             sql.del_plan(hours, minutes, cursor)
             conn.commit()
-            conn.close()
+            # conn.close()
             QtWidgets.QMessageBox.information(self, 'Complete', 'Completed')
         else:
             QtWidgets.QMessageBox.information(self, 'Error', 'Invalid input')
+        conn.close()
 
 if __name__ == "__main__":
     import sys

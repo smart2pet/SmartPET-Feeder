@@ -64,7 +64,7 @@ async def add_plan_func(plan_argument: Plan) -> Dict[str, int]:
         print("[WARN] Client sent invalid data")
         return {"result": 1, "reason": "Data invalid."}
     else:
-        conn = sqlite3.Connection("./smartpet.db")
+        conn = sqlite3.Connection("~/smartpet.db")
         cursor = sqlite3.Cursor(conn)
         sql.add_plan(
             plan_argument.time_h, plan_argument.time_m, plan_argument.weight, cursor
@@ -89,7 +89,7 @@ async def del_plan_func(plan_argument: Plan_time) -> Dict[str, int]:
         print("[WARN] Client sent invalid data")
         return {"result": 1, "reason": "Data invalid."}
     else:
-        conn = sqlite3.Connection("./smartpet.db")
+        conn = sqlite3.Connection("~/smartpet.db")
         cursor = sqlite3.Cursor(conn)
         sql.del_plan(plan_argument.time_h, plan_argument.time_m, cursor)
         conn.commit()
@@ -108,7 +108,7 @@ async def get_food_amount(food_range: Get_food) -> int:
     Returns:
         The food weight.
     """
-    with sqlite3.Connection("./smartpet.db") as conn:
+    with sqlite3.Connection("~/smartpet.db") as conn:
         cursor = sqlite3.Cursor(conn)
         now_time = time.localtime()
         year = now_time.tm_year

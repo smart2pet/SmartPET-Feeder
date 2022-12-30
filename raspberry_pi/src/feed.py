@@ -31,7 +31,7 @@ def feed(amount: int) -> None:
     :return: None
     :rtype: None
     """
-    conn = sqlite3.Connection("./smartpet.db") # Connect to the database for storing the feeding data  
+    conn = sqlite3.Connection("~/smartpet.db") # Connect to the database for storing the feeding data  
     cursor = sqlite3.Cursor(conn)
     # Run the model
     interpreter.set_tensor(tflife_input_details[0]["index"], [[amount - 5]])
