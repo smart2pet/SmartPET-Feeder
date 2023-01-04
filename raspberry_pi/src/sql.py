@@ -1,5 +1,5 @@
 import sqlite3
-
+import log
 
 def add_plan(
     hours: int, minutes: int, amount: int, cursor: sqlite3.Cursor
@@ -17,7 +17,8 @@ def add_plan(
     cursor.execute(
         f"INSERT INTO plan (hours, minutes, weights) VALUES ({hours}, {minutes}, {amount});"
     )
-    return cursor
+    log.add_plan(hours, minutes, amount)
+    
 
 
 def del_plan(
@@ -31,6 +32,7 @@ def del_plan(
     """
     print(f"DELETE FROM plan WHERE hours = {hours} and minutes = {minutes};")
     cursor.execute(f"DELETE FROM plan WHERE hours = {hours} and minutes = {minutes};")
+    log.del_plan(hour, minutes)
 
 
 def get_plan(cursor: sqlite3.Cursor) -> list[tuple]:

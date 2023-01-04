@@ -139,36 +139,34 @@ class Ui_MainWindow(QtWidgets.QWidget):
         feed.feed(weight)
 
     def add_plan(self):
-        conn = sqlite3.Connection(DB_PATH)
-        cursor = sqlite3.Cursor(conn)
-        hours = self.hours_1.value()
-        minutes = self.minutes_1.value()
-        weight = self.weight.value()
-        if ((hours < 24) and (minutes < 60)):
-            print(hours, minutes)
-            sql.add_plan(hours, minutes, weight, cursor)
-            conn.commit()
-            # conn.close()
-            QtWidgets.QMessageBox.information(self, 'Complete', 'Completed')
-        else:
-            QtWidgets.QMessageBox.information(self, 'Error', 'Invalid input')
-        conn.close()
+        with sqlite3.Connection(DB_PATH) as conn:
+            cursor = sqlite3.Cursor(conn)
+            hours = self.hours_1.value()
+            minutes = self.minutes_1.value()
+            weight = self.weight.value()
+            if ((hours < 24) and (minutes < 60)):
+                print(hours, minutes)
+                sql.add_plan(hours, minutes, weight, cursor)
+                conn.commit()
+                # conn.close()
+                QtWidgets.QMessageBox.information(self, 'Complete', 'Completed')
+            else:
+                QtWidgets.QMessageBox.information(self, 'Error', 'Invalid input')
 
     def del_plan(self):
-        conn = sqlite3.Connection(DB_PATH)
-        cursor = sqlite3.Cursor(conn)
-        hours = self.hours_2.value()
-        minutes = self.minutes_2.value()
-        if ((hours < 24) and (minutes < 60)):
-            sql.del_plan(hours, minutes, cursor)
-            conn.commit()
-            # conn.close()
-            QtWidgets.QMessageBox.information(self, 'Complete', 'Completed')
-        else:
-            QtWidgets.QMessageBox.information(self, 'Error', 'Invalid input')
-        conn.close()
+        with sqlite3.Connection(DB_PATH) as conn:
+            cursor = sqlite3.Cursor(conn)
+            hours = self.hours_2.value()
+            minutes = self.minutes_2.value()
+            if ((hours < 24) and (minutes < 60)):
+                sql.del_plan(hours, minutes, cursor)
+                conn.commit()
+                # conn.close()
+                QtWidgets.QMessageBox.information(self, 'Complete', 'Completed')
+            else:
+                QtWidgets.QMessageBox.information(self, 'Error', 'Invalid input')
 
-if __name__ == "__main__":
+def main():
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
@@ -177,3 +175,6 @@ if __name__ == "__main__":
     apply_stylesheet(app, 'default_dark.xml')
     MainWindow.show()
     sys.exit(app.exec_())
+
+if __name__ == "__main__":
+    main()

@@ -4,6 +4,7 @@ import _feed
 import serial
 import sql
 import tflite_runtime.interpreter as tflite
+import log
 from config import DB_PATH
 
 try:
@@ -54,4 +55,5 @@ def feed(amount: int) -> None:
     conn.commit()
     conn.close()
     # Log
-    print('[INFO] Feeding finished.')
+    # print('[INFO] Feeding finished.')
+    log.feeded(amount)    

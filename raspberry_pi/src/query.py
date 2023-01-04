@@ -35,6 +35,8 @@ def start_query() -> None:
                     feed.feed(weight)
                     history.append((hours, minutes))
 
+def main():
+    start_query()
 
 if __name__ == "__main__":
-    start_query()
+    main()

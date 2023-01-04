@@ -9,11 +9,11 @@ The open-source, easy-to-use feeder
 #### For Raspberry Pi:
 + A Raspberry Pi with Raspberry Pi OS (of course).
 + A touchscreen
-+ A outer shell (recommanded because the pet may break the machine.)
++ A outer shell (recommand because the pet may break the machine.)
 #### For Espressif ESP32:
-+ A Expressif ESP32 module (of course).
++ A Espressif ESP32 module (of course).
 #### For Other Hardware:
-+ A stepper motor that is fit the size of moter in 3D model and a A4988 stepper motor driver.
++ A stepper motor that is fit the size of motor in 3D model and a A4988 stepper motor driver.
 + You need 3D-print or some way to make the feeder hardware (the .obj 3D file is in `hardware` directory).
 + Some wires and power supply.
 ### Install:
@@ -27,7 +27,7 @@ The open-source, easy-to-use feeder
 + To use, run the start.sh file in the desktop and it will automatic run. 
 
 #### Model Training
-+ You may train your own model because the motor was diffrenet. Before training, please look at the comments in `other/train.py` and follow the instruction of the comment. And you need to run `python other/train.py`.
++ You may train your own model because the motor was different. Before training, please look at the comments in `other/train.py` and follow the instruction of the comment. And you need to run `python other/train.py`.
 + You must convert .h5 hdf5 format to the .tflite tensorflow lite format and replace `raspberry_pi/src/model.tflite` to your model.
 
 #### ESP32 Use

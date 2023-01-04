@@ -4,12 +4,10 @@ pip install -r ./requirements.txt
 sudo apt install python3-pyqt5
 echo Installed python requirements!
 echo Creating desktop shortcut...
-echo Enter your host ip address:
-read ip
+echo "#!/bin/bash" >> ~/Desktop/start.sh
 echo "cd ~/SmartPET-Feeder/raspberry_pi/src" >> ~/Desktop/start.sh
-echo "python ./ui.py &" >> ~/Desktop/start.sh
-echo "python ./query.py &" >> ~/Desktop/start.sh
-echo "python -m uvicorn web_api:app --reload --host $ip" >> ~/Desktop/start.sh
+echo "python ./start.py &" >> ~/Desktop/start.sh
+chmod 777 ~/Desktop/start.sh
 echo Created desktop shortcut.
 echo "Creating database at ~/smartpet.db..."
 cd ~

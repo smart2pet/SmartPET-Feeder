@@ -7,6 +7,7 @@ import sql
 from fastapi import FastAPI
 from pydantic import BaseModel
 from config import DB_PATH
+import uvicorn
 
 app = FastAPI()
 
@@ -65,13 +66,13 @@ async def add_plan_func(plan_argument: Plan) -> Dict[str, int]:
         print("[WARN] Client sent invalid data")
         return {"result": 1, "reason": "Data invalid."}
     else:
-        conn = sqlite3.Connection(DB_PATH)
-        cursor = sqlite3.Cursor(conn)
-        sql.add_plan(
-            plan_argument.time_h, plan_argument.time_m, plan_argument.weight, cursor
-        )
-        conn.commit()
-        conn.close()
+        with sqlite3.Connection(DB_PATH) as conn:
+            cursor = sqlite3.Cursor(conn)
+            sql.add_plan(
+                plan_argument.time_h, plan_argument.time_m, plan_argument.weight, cursor
+            )
+            conn.commit()
+            # conn.close()
         return {"result": 0}
 
 
@@ -90,11 +91,11 @@ async def del_plan_func(plan_argument: Plan_time) -> Dict[str, int]:
         print("[WARN] Client sent invalid data")
         return {"result": 1, "reason": "Data invalid."}
     else:
-        conn = sqlite3.Connection(DB_PATH)
-        cursor = sqlite3.Cursor(conn)
-        sql.del_plan(plan_argument.time_h, plan_argument.time_m, cursor)
-        conn.commit()
-        conn.close()
+        with sqlite3.Connection(DB_PATH) as conn:
+            cursor = sqlite3.Cursor(conn)
+            sql.del_plan(plan_argument.time_h, plan_argument.time_m, cursor)
+            conn.commit()
+            conn.close()
         return {"result": 0}
 
 
@@ -133,3 +134,6 @@ async def get_food_amount(food_range: Get_food) -> int:
             result_dict = {"result": 1, "reason": "Range invalid."}
 
     return result_dict
+
+def main():
+    uvicorn.run(app, host="0.0.0.0", port=80)

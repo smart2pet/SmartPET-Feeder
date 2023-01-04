@@ -29,8 +29,8 @@ train_x = [
     [15],
     [5],
 ]
-# Bring your data here. train_y is the weight of food dropped when turn the round in train_x, a data in train_y matches a data in train_x. Don't change train_x, 
-# you need to do these test and bring the weight of food dropped in train_y (the unit is gram).
+# Bring your data here. train_y is the amount of food dropped when turn the laps in train_x, a data in train_y matches a data in train_x. Don't change train_x, 
+# you need to do these test and bring the amount of food dropped in train_y (the unit is gram).
 
 # You may train in multiple times to get the best result.
 train_y = [
@@ -113,6 +113,6 @@ model.save("./model.h5")
 # Do the test.
 test_predictions = model.predict([[60]])
 print(test_predictions)
-# After the test, please do the test on your motor and see the weight of food dropped.
+# After the test, please do the test on your motor and see the amount of food dropped.
 # If there was a big error(more than ±4 gram), please train again.
 # If it's always like that, please check the data.
