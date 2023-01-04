@@ -99,7 +99,7 @@ async def del_plan_func(plan_argument: Plan_time) -> Dict[str, int]:
         return {"result": 0}
 
 
-@app.get("/api/food")
+@app.put("/api/food")
 async def get_food_amount(food_range: Get_food) -> int:
     """
     Get the food weight from the database.
