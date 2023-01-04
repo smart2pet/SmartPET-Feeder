@@ -32,7 +32,7 @@ def del_plan(
     """
     print(f"DELETE FROM plan WHERE hours = {hours} and minutes = {minutes};")
     cursor.execute(f"DELETE FROM plan WHERE hours = {hours} and minutes = {minutes};")
-    log.del_plan(hour, minutes)
+    log.del_plan(hours, minutes)
 
 
 def get_plan(cursor: sqlite3.Cursor) -> list[tuple]:
