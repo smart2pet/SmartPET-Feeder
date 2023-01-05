@@ -1,6 +1,6 @@
 # How to contribute
 ## Issues
-+ If you find a security bug, please refer to SECURITY.md to read about security.
++ If you find a security issue, please refer to SECURITY.md to read about security.
 + When you know that isn't a bug affect security, you can read after.
 + Before you send the issue, you should search the content you want send. If you found one is same with you, don't send it because it's a duplicate. Else you can send it.
 

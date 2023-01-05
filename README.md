@@ -54,5 +54,4 @@ create an issue for some bugs that you can't resolve or you want to make some ne
 + For more details, please look at CONTRIBUTING.md.
 
 ## License
-
-This project was licensed under GPL v3.0 license. For more detail, please look at the LICENSE file.
++ This project was licensed under GPL v3.0 license. For more detail, please look at the LICENSE file.

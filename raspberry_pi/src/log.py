@@ -1,8 +1,9 @@
 import logging
+from config import HOME
 logger = logging.getLogger('SmartPET-Feeder Raspberry_pi')
-logging.basicConfig(filename='smartpet.log',
-                    format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s-%(funcName)s',
-                    level=logging.ERROR)
+logging.basicConfig(filename=HOME + '/smartpet.log',
+                    # format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s-%(funcName)s',
+                    level=logging.INFO)
 def feeded(amount: int):
     logger.warn(f"Feeder feed finished. Feeded {amount} g.")
 
