@@ -136,4 +136,7 @@ async def get_food_amount(food_range: Get_food) -> int:
     return result_dict
 
 def main():
+    '''
+    Use for run this web API server.
+    '''
     uvicorn.run(app, host="0.0.0.0", port=8000)
