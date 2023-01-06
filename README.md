@@ -27,7 +27,7 @@ The open-source, easy-to-use feeder
 + To use, run the start.sh file in the desktop and it will automatic run. 
 
 #### Model Training
-+ You may train your own model because the motor was different. Before training, please look at the comments in `other/train.py` and follow the instruction of the comment. And you need to run `python other/train.py`.
++ Don't use my model. You may train your own model because the motor was different. Before training, please look at the comments in `other/train.py` and follow the instruction of the comment. And you need to run `python other/train.py`.
 + You must convert .h5 hdf5 format to the .tflite tensorflow lite format and replace `raspberry_pi/src/model.tflite` to your model.
 
 #### ESP32 Use
