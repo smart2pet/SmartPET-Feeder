@@ -1,4 +1,5 @@
 # SmartPET Feeder
+***Please completely read this README. Else you will got many trouble.***
 [![CodeQL](https://github.com/smart2pet/SmartPET-Feeder/actions/workflows/codeql.yml/badge.svg)](https://github.com/smart2pet/SmartPET-Feeder/actions/workflows/codeql.yml)  
 The open-source, easy-to-use feeder
 ![Logo](./doc/logo.png "Logo")
