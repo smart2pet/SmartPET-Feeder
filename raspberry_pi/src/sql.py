@@ -15,7 +15,8 @@ def add_plan(
         f"INSERT INTO plan (hours, minutes, weights) VALUES ({hours}, {minutes}, {amount});"
     )
     cursor.execute(
-        f"INSERT INTO plan (hours, minutes, weights) VALUES ({hours}, {minutes}, {amount});"
+        "INSERT INTO plan (hours, minutes, weights) VALUES (?, ?, ?);",
+        (hours, minutes, amount)
     )
     log.add_plan(hours, minutes, amount)
     
@@ -31,7 +32,7 @@ def del_plan(
     :param cursor: The cursor of the database.
     """
     print(f"DELETE FROM plan WHERE hours = {hours} and minutes = {minutes};")
-    cursor.execute(f"DELETE FROM plan WHERE hours = {hours} and minutes = {minutes};")
+    cursor.execute("DELETE FROM plan WHERE hours = ? and minutes = ?;", (hours, minutes))
     log.del_plan(hours, minutes)
 
 
@@ -69,7 +70,8 @@ def add_to_history(
         f"INSERT INTO history (hours, minutes, weight, year, month, day) VALUES ({hours}, {minutes}, {weight}, {year}, {month}, {day});"
     )
     cursor.execute(
-        f"INSERT INTO history (hours, minutes, weight, year, month, day) VALUES ({hours}, {minutes}, {weight}, {year}, {month}, {day});"
+        "INSERT INTO history (hours, minutes, weight, year, month, day) VALUES (?, ?, ?, ?, ?, ?);",
+        (hours, minutes, weight, year, month, day),
     )
     cursor.close()
 
@@ -89,7 +91,8 @@ def get_total_feed_amount_today(
     :return: The total feed today.
     """
     cursor.execute(
-        f"SELECT SUM(weight) FROM history WHERE year = {year} and month = {month} and day = {day};"
+        "SELECT SUM(weight) FROM history WHERE year = ? and month = ? and day = ?;", 
+        (year, month, day)
     )
     return cursor.fetchone()
 
@@ -106,7 +109,8 @@ def get_total_feed_amount_this_month(year, month, day, cursor: sqlite3.Cursor):
         int: The total feed this month.
     """
     cursor.execute(
-        f"SELECT SUM(weight) FROM history WHERE year = {year} and month = {month};"
+        "SELECT SUM(weight) FROM history WHERE year = ? and month = ?;",
+        (year, month)
     )
     return cursor.fetchone()
 
@@ -126,7 +130,8 @@ def get_average_feed_amount_last_month(year, month, day, cursor: sqlite3.Cursor)
     """
     if month > 1:
         cursor.execute(
-            f"SELECT AVG(weight) FROM history WHERE year = {year} and month = {month - 1};"
+            "SELECT AVG(weight) FROM history WHERE year = ? and month = ?;",
+            (year, month - 1),
         )
         return cursor.fetchone()
     return 0
@@ -141,5 +146,5 @@ def get_total_feed_amount_this_year(year, month, day, cursor: sqlite3.Cursor):
     Returns:
         int: The total feed this year.
     """
-    cursor.execute(f"SELECT SUM(weight) FROM history WHERE year = {year};")
+    cursor.execute("SELECT SUM(weight) FROM history WHERE year = ?;", (year,))
     return cursor.fetchone()
