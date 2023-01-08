@@ -33,6 +33,8 @@ def feed(amount: int) -> None:
     :return: None
     :rtype: None
     """
+    if amount == 0: 
+        return
     conn = sqlite3.Connection(DB_PATH) # Connect to the database for storing the feeding data  
     cursor = sqlite3.Cursor(conn)
     # Run the model
