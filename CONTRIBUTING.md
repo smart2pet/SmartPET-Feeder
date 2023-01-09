@@ -6,7 +6,8 @@
 
 ## Pull Requests
 + When you send pull requests, you means you want make commits. Before you make it, you must check your code to prevent security problems and bugs, and your code must be tidy and readable, to prevent unreadable codes. And another, you are going to check if there's a pull request is the same with yours. If there's no duplicate, you can start next step. 
-+ When you did your preprocess and there's no any possible serious problem, then you can send your pull requests. But you need follow the requirements.
++ When you did your preprocess and there's no any possible serious problem, then you can send your pull requests. But you need follow the following 
+rules.
 + You need let people know what will your code do.
 + You must use English to send pull requests.
 + Your pull requests **must not** contains bad languages.
