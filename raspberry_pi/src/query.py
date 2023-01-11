@@ -21,19 +21,17 @@ def start_query() -> None:
         if (now_hours == 0) and (now_minutes == 0):
             history = []
         for plan in plans:
-            # Check for feeding time.
+            # Check for feeding time. It's for avoid from duplicate feeding event. 
             
             hours = plan[0]
             minutes = plan[1]
             weight = plan[2]
             if (now_hours == hours) and (now_minutes == minutes):
-                feeded = 0
                 for plan in history:
                     if (hours == plan[0]) and (minutes == plan[1]):
-                        feeded = 1
-                if feeded == 0:
-                    feed.feed(weight)
-                    history.append((hours, minutes))
+                        continue
+                feed.feed(weight)
+                history.append((hours, minutes))
 
 def main():
     start_query()
