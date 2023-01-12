@@ -9,7 +9,7 @@ def feeded(amount: int):
     Log feeding event to log file.
     :param amount: amount of feeded food in grams.
     '''
-    logger.warn(f"Feeder feed finished. Feeded {amount} g.")
+    logger.warn(f"Feeder feed finished. Fed {amount} g.")
 
 def add_plan(hour: int, minute: int, amount: int):
     '''
