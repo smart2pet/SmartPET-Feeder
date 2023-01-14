@@ -52,7 +52,8 @@ class Ui_MainWindow(QtWidgets.QWidget):
         font.setFamily("宋体")
         font.setPointSize(26)
         self.label_2.setFont(font)
-        self.label_2.setLayoutDirection(QtCore.Qt.LeftToRight)        
+        self.label_2.setLayoutDirection(QtCore.Qt.LeftToRight) 
+       
         self.label_2.setAutoFillBackground(False)
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName("label_2")
@@ -118,7 +119,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.feed.clicked.connect(self.feed1)
+        self.feed.clicked.connect(self.feedfunc)
         self.add.clicked.connect(self.add_plan)
         self.delete.clicked.connect(self.del_plan)
     def retranslateUi(self, MainWindow):
@@ -134,7 +135,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
         self.label_4.setText(_translate("MainWindow", ":"))
         self.label_5.setText(_translate("MainWindow", "g"))
     
-    def feed1(self):
+    def feedfunc(self):
         weight = self.weight_2.value()
         feed.feed(weight)
 
