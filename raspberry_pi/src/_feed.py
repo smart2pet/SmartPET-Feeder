@@ -1,6 +1,8 @@
+# Warning: Not recommended to use! This is a low level interface.
+
 import serial
 
-def feed(laps, feeder: serial.Serial):
+def run_motor(laps, feeder: serial.Serial):
     """
     (Low level interface, ***don't use directly***.) Control the lower computer to control the motor turning the specific laps.
     :param laps: int, the number of laps to run.

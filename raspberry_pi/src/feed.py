@@ -44,7 +44,7 @@ def feed(amount: int) -> None:
     print(custom)
     # Start to feed
     
-    _feed.feed(int(custom[0][0]), feeder)
+    _feed.run_motor(int(custom[0][0]), feeder)
     # Get the time
     now_time = time.localtime()
     hours = now_time.tm_hour
@@ -58,4 +58,4 @@ def feed(amount: int) -> None:
     conn.close()
     # Log
     # print('[INFO] Feeding finished.')
-    log.feeded(amount)    
+    log.fed(amount)

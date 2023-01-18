@@ -4,7 +4,7 @@ logger = logging.getLogger('SmartPET-Feeder Raspberry_pi')
 logging.basicConfig(filename=HOME + '/smartpet.log',
                     # format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s-%(funcName)s',
                     level=logging.INFO)
-def feeded(amount: int):
+def fed(amount: int):
     '''
     Log feeding event to log file.
     :param amount: amount of feeded food in grams.
