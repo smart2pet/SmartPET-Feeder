@@ -17,7 +17,7 @@ except:
         feeder = None
         # pass
 
-# Load feeding precise model.
+# Load the model.
 interpreter = tflite.Interpreter(model_path="model.tflite")
 interpreter.allocate_tensors()
 tflife_input_details = interpreter.get_input_details()
@@ -26,7 +26,7 @@ tflife_output_details = interpreter.get_output_details()
 
 def feed(amount: int) -> None:
     """
-    Feed the pet with the given weight.
+    (High level interface) Feed the pet with the given weight.
 
     :param amount: The amount of the food.
     :type amount: int
@@ -35,27 +35,22 @@ def feed(amount: int) -> None:
     """
     if amount == 0: 
         return
-    conn = sqlite3.Connection(DB_PATH) # Connect to the database for storing the feeding data  
-    cursor = sqlite3.Cursor(conn)
-    # Run the model
-    interpreter.set_tensor(tflife_input_details[0]["index"], [[amount - 5]])
-    interpreter.invoke()
-    custom = interpreter.get_tensor(tflife_output_details[0]["index"])
-    print(custom)
-    # Start to feed
-    
-    _feed.run_motor(int(custom[0][0]), feeder)
-    # Get the time
-    now_time = time.localtime()
-    hours = now_time.tm_hour
-    minutes = now_time.tm_min
-    year = now_time.tm_year
-    month = now_time.tm_mon
-    day = now_time.tm_mday
-    # Store the feeding history.
-    sql.add_to_history(hours, minutes, amount, year, month, day, cursor)
-    conn.commit()
-    conn.close()
-    # Log
-    # print('[INFO] Feeding finished.')
-    log.fed(amount)
+    with sqlite3.Connection(DB_PATH) as conn: 
+        interpreter.set_tensor(tflife_input_details[0]["index"], [[amount - 5]])
+        interpreter.invoke()
+        custom = interpreter.get_tensor(tflife_output_details[0]["index"])
+        print(custom)
+        # Start to feed
+        _feed.run_motor(int(custom[0][0]), feeder)
+        # Get the time
+        now_time = time.localtime()
+        hours = now_time.tm_hour
+        minutes = now_time.tm_min
+        year = now_time.tm_year
+        month = now_time.tm_mon
+        day = now_time.tm_mday
+        # Store the feeding history.
+        sql.add_to_history(hours, minutes, amount, year, month, day, cursor)
+        conn.commit()
+        # Log
+        log.fed(amount)

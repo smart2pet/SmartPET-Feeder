@@ -8,5 +8,5 @@ def run_motor(laps, feeder: serial.Serial):
     :param laps: int, the number of laps to run.
     """
     if feeder is not None:
-        feeder.write(f's{laps};'.encode()) # Send weight to esp32
+        feeder.write(f's{laps};'.encode()) # Send motor run request to esp32.
         feeder.flush() # Flush the buffer

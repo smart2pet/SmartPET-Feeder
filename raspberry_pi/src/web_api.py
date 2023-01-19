@@ -72,7 +72,6 @@ async def add_plan_func(plan_argument: Plan) -> Dict[str, int]:
                 plan_argument.time_h, plan_argument.time_m, plan_argument.weight, cursor
             )
             conn.commit()
-            # conn.close()
         return {"result": 0}
 
 
@@ -95,7 +94,6 @@ async def del_plan_func(plan_argument: Plan_time) -> Dict[str, int]:
             cursor = sqlite3.Cursor(conn)
             sql.del_plan(plan_argument.time_h, plan_argument.time_m, cursor)
             conn.commit()
-            conn.close()
         return {"result": 0}
 
 
