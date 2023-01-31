@@ -2,9 +2,9 @@
 echo Installing python requirements...
 pip install -r ./requirements.txt
 sudo apt install python3-pyqt5
-echo Installed python requirements!
+echo 'Installed python requirements!'
 echo Creating desktop shortcut...
-echo "#!/bin/bash" >> ~/Desktop/start.sh
+echo '#!/bin/bash' >> ~/Desktop/start.sh
 echo "cd ~/SmartPET-Feeder/raspberry_pi/src" >> ~/Desktop/start.sh
 echo "python ./start.py &" >> ~/Desktop/start.sh
 chmod 777 ~/Desktop/start.sh
