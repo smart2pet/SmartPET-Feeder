@@ -105,3 +105,6 @@ venv.bak/
 
 raspberry_pi/src/smartpet.log
 raspberry_pi/src/model.tflite
+
+raspberrypi/src/__pycache__/*
+
