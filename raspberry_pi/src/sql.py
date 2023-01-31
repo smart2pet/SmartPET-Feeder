@@ -103,7 +103,7 @@ def get_total_feed_amount_this_month(year, month, day, cursor: sqlite3.Cursor):
     Args:
         year (int): The year.
         month (int): The month.
-        day (everything): Ignored because it's useful. But we need to adapt the function in web_api.py.
+        day (None): Ignored but for compat with web_api.py.
         cursor (sqlite3.Cursor): The cursor.
     Returns:
         int: The total feed this month.

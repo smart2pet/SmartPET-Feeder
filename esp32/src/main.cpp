@@ -56,44 +56,13 @@ void setup() {
 }
 
 void loop() {
-    // delay(1000);
-
-    /*
-     * Moving motor in full step mode is simple:
-     */
     stepper.setMicrostep(1);  // Set microstep mode to 1:1
 
-    // One complete revolution is 360°
-    // stepper.rotate(360 * 20);     // forward revolution
-    // stepper.rotate(-360);    // reverse revolution
     if(Serial.read() == 's'){
-    // One complete revolution is also MOTOR_STEPS steps in full step mode
-        // Serial.print('>');
         String d = Serial.readStringUntil(';');
         Serial.println();
         int i = d.toInt();
         Serial.println("OK");
         stepper.rotate(360*i);    // forward revolution
     }
-    // stepper.move(-MOTOR_STEPS);   // reverse revolution
-
-    /*
-     * Microstepping mode: 1, 2, 4, 8, 16 or 32 (where supported by driver)
-     * Mode 1 is full speed.
-     * Mode 32 is 32 microsteps per step.
-     * The motor should rotate just as fast (at the set RPM),
-     * but movement precision is increased, which may become visually apparent at lower RPMs.
-     */
-    // stepper.setMicrostep(8);   // Set microstep mode to 1:8
-
-    // In 1:8 microstepping mode, one revolution takes 8 times as many microsteps
-    // stepper.move(8 * MOTOR_STEPS);    // forward revolution
-    // stepper.move(-8 * MOTOR_STEPS);   // reverse revolution
-    
-    // One complete revolution is still 360° regardless of microstepping mode
-    // rotate() is easier to use than move() when no need to land on precise microstep position
-    // stepper.rotate(360);
-    // stepper.rotate(-360);
-
-    // delay(5000);
 }

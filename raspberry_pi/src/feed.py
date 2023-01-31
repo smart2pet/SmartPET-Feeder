@@ -26,7 +26,7 @@ tflife_output_details = interpreter.get_output_details()
 
 def feed(amount: int) -> None:
     """
-    (High level interface) Feed the pet with the given weight.
+    (High level interface. Recommend to use.) Feed the pet with the given weight.
 
     :param amount: The amount of the food.
     :type amount: int
